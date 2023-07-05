@@ -71,7 +71,13 @@ exports.login = async (req, res) => {
                     }
                 }
 
-                console.log(permissionObject);
+                req.session.PermissionObject = permissionObject;
+                req.session.UseName = "SHyam";
+                console.log("login")
+
+                console.log('req.session.PermissionObject',req.session.PermissionObject);
+                console.log("-----------------")
+
                 const token = jwt.sign({ id: getUser.id }, privateKey);
                 return res.send({ data: { 'token': token }, message: "Successfully Logged In", code: 200 })
 
@@ -82,4 +88,11 @@ exports.login = async (req, res) => {
             }
         }
     }
+}
+
+exports.test = (req,res) => {
+    console.log("Test")
+    console.log('req.session.PermissionObject',req.session.PermissionObject);
+    console.log('req.session.UseName',req.session.UseName);
+
 }

@@ -4,11 +4,17 @@ var app = express();
 const dbconfig = require('./db/config')
 const router = require('./routes/routes')
 const bodyParser = require('body-parser')
+const session = require('express-session');
 
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
+app.use(session({
+    secret: 'dsgagbcbcxgarwaq',
+    resave: false,
+    saveUninitialized: false
+}));
 
 app.use('/api', router);
 
