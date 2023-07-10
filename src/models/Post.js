@@ -18,6 +18,10 @@ const Post = sequelize.define('post', {
         type: Sequelize.TEXT,
         allowNull: true,
     },
+    status: {
+        type: Sequelize.NUMBER,
+        allowNull: true,
+    },
 }, {
     timestamps: true
 })
